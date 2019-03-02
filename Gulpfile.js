@@ -6,6 +6,9 @@ const gulp = require('gulp'),
     webpackStream = require('webpack-stream'),
     webpackConfig = require('./webpack.config.js'),
     packageInfo = require('./package'),
+    del = require('del'),
+    paths = packageInfo.paths,
+    tasks = Object.keys(paths),
     watchFiles = function(){
         for (const [task, watchPath] of Object.entries(packageInfo.paths)) {
             log('Created watch task for ' + task);
@@ -15,8 +18,17 @@ const gulp = require('gulp'),
         return gulp.series(Object.keys(packageInfo.paths));
     };
 
+let getCleanPaths = function(){
+    let cleanPaths = [];
+    Object.values(paths).forEach(function (value) {
+       cleanPaths.push(value.replace('src', 'digulpst'));
+    });
+
+    return cleanPaths;
+};
+
 gulp.task('lib', function () {
-    return gulp.src(packageInfo.paths.lib)
+    return gulp.src(paths.lib)
         .pipe(gulp.dest('./dist/lib'));
 });
 
@@ -44,6 +56,9 @@ gulp.task('images', function () {
         .pipe(gulp.dest('./dist/images'));
 });
 
+gulp.task('clean', function(){
+    return del(getCleanPaths(), {force:true});
+});
 
-gulp.task('default', gulp.series(Object.keys(packageInfo.paths)));
+gulp.task('default', gulp.series(tasks));
 gulp.task('watch', gulp.series('default', watchFiles));
