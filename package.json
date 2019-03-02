@@ -1,0 +1,26 @@
+{
+  "name": "coreyboard",
+  "version": "0.0.1",
+  "description": "Soundboard of Corey Bedell",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/128keaton/CoreyBoard.git"
+  },
+  "keywords": [
+    "corey",
+    "board"
+  ],
+  "author": "Keaton Burleson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/128keaton/CoreyBoard/issues"
+  },
+  "homepage": "https://github.com/128keaton/CoreyBoard#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0"
+  }
+}
