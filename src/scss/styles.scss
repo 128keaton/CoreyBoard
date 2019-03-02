@@ -20,6 +20,7 @@ body {
   }
 
   .sound {
+    touch-action: manipulation;
     background-color: cadetblue;
     position: relative;
     height: 0;
@@ -33,7 +34,16 @@ body {
       padding-bottom: 90%;
     }
 
+    .sound-name{
+      position: absolute;
+      top: calc(50% - .5em);
+      left: 0;
+      width: 100%;
+      color: white;
+      font-size: 35px;
+    }
     img {
+      touch-action: manipulation;
       width: 100%;
       pointer-events: none;
     }

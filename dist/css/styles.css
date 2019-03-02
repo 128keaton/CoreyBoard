@@ -17,6 +17,7 @@ body {
     .sounds {
       max-width: 99vw; } }
   .sounds .sound {
+    touch-action: manipulation;
     background-color: cadetblue;
     position: relative;
     height: 0;
@@ -29,7 +30,15 @@ body {
       .sounds .sound {
         width: 90%;
         padding-bottom: 90%; } }
+    .sounds .sound .sound-name {
+      position: absolute;
+      top: calc(50% - .5em);
+      left: 0;
+      width: 100%;
+      color: white;
+      font-size: 35px; }
     .sounds .sound img {
+      touch-action: manipulation;
       width: 100%;
       pointer-events: none; }
   .sounds [data-display=false] {
