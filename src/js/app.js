@@ -96,7 +96,6 @@ let App = function () {
         $(element).labeleffect({
             effect: 'floating',
             shadowColor: 'blue',
-            hiDir: 2
         });
     };
 
