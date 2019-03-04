@@ -9,7 +9,8 @@ const gulp = require('gulp'),
     del = require('del'),
     paths = packageInfo.paths,
     tasks = Object.keys(paths),
-    watchFiles = function(){
+    favicon = require('./favicon'),
+    watchFiles = function () {
         for (const [task, watchPath] of Object.entries(packageInfo.paths)) {
             log('Created watch task for ' + task);
             gulp.watch(watchPath, gulp.parallel(task));
@@ -18,10 +19,10 @@ const gulp = require('gulp'),
         return gulp.series(Object.keys(packageInfo.paths));
     };
 
-let getCleanPaths = function(){
+let getCleanPaths = function () {
     let cleanPaths = [];
     Object.values(paths).forEach(function (value) {
-       cleanPaths.push(value.replace('src', 'digulpst'));
+        cleanPaths.push(value.replace('src', 'digulpst'));
     });
 
     return cleanPaths;
@@ -56,9 +57,15 @@ gulp.task('images', function () {
         .pipe(gulp.dest('./dist/images'));
 });
 
-gulp.task('clean', function(){
-    return del(getCleanPaths(), {force:true});
+gulp.task('html', function () {
+    return gulp.src(packageInfo.paths.html)
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('clean', function () {
+    return del(getCleanPaths(), {force: true});
 });
 
 gulp.task('default', gulp.series(tasks));
+gulp.task('build-prod', gulp.series(tasks.concat('generate-favicon', 'inject-favicon-markups')));
 gulp.task('watch', gulp.series('default', watchFiles));
