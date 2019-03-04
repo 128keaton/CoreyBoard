@@ -5,7 +5,8 @@
   "scripts": {
     "server": "webpack-dev-server && gulp watch",
     "watch": "gulp watch",
-    "build": "gulp default"
+    "build": "gulp default",
+    "test" : "echo 'No tests here :)'"
   },
   "repository": {
     "type": "git",
