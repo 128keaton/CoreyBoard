@@ -2,8 +2,9 @@ language: node_js
 node_js: '10.15'
 cache: npm
 sudo: required
+before_script:
+  - npm install -g gulp-cli
 install:
-  - npm i -g gulp
   - npm i
   - npm run build
 deploy:
@@ -11,5 +12,6 @@ deploy:
   skip-cleanup: true
   github-token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
   keep-history: true
+  target-branch: gh-pages
   on:
-    branch: gh-pages
+    branch: master
