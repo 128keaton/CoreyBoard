@@ -19,15 +19,6 @@ const gulp = require('gulp'),
         return gulp.series(Object.keys(packageInfo.paths));
     };
 
-let getCleanPaths = function () {
-    let cleanPaths = [];
-    Object.values(paths).forEach(function (value) {
-        cleanPaths.push(value.replace('src', 'digulpst'));
-    });
-
-    return cleanPaths;
-};
-
 gulp.task('lib', function () {
     return gulp.src(paths.lib)
         .pipe(gulp.dest('./dist/lib'));
@@ -63,7 +54,7 @@ gulp.task('html', function () {
 });
 
 gulp.task('clean', function () {
-    return del(getCleanPaths(), {force: true});
+    return del(['dist/', 'index.html', 'faviconData.json'], {force: true});
 });
 
 gulp.task('default', gulp.series(tasks));

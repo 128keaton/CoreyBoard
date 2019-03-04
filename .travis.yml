@@ -7,6 +7,8 @@ before_script:
 install:
   - npm i
   - npm run build
+before_deploy:
+  - git add dist/images/favicons/
 deploy:
   provider: pages
   skip-cleanup: true
