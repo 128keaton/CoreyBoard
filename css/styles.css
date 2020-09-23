@@ -1,0 +1,95 @@
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0; }
+
+body {
+  background-color: deeppink; }
+
+.sounds {
+  display: flex;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  max-width: 50vw;
+  margin: 0 auto; }
+  @media screen and (max-width: 800px) {
+    .sounds {
+      max-width: 99vw; } }
+  .sounds .sound {
+    touch-action: manipulation;
+    background-color: white;
+    position: relative;
+    height: 0;
+    width: 24%;
+    min-width: 200px;
+    min-height: 200px;
+    padding-bottom: 24%;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 1em auto;
+    border: 5px solid blue; }
+    .sounds .sound .sound-name {
+      position: absolute;
+      top: calc(50% - .5em);
+      left: 0;
+      width: 100%;
+      color: blue;
+      font-size: 5rem; }
+    @media screen and (max-width: 800px) {
+      .sounds .sound {
+        width: 45%;
+        padding-bottom: 45%; } }
+  .sounds .sound::after {
+    -webkit-box-shadow: 0 27px 14px -4px rgba(14, 21, 41, 0.52);
+    -moz-box-shadow: 0 27px 14px -4px rgba(14, 21, 41, 0.52);
+    box-shadow: 0 27px 14px -4px rgba(14, 21, 41, 0.52);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out; }
+  .sounds [data-display=false] {
+    display: none; }
+
+.marquee {
+  width: 100%;
+  height: 300px; }
+  .marquee span {
+    margin-top: 0.5em;
+    margin-left: 1.6em;
+    width: 300px;
+    display: inline-block;
+    color: white;
+    font-size: 60px;
+    animation-name: rotate;
+    animation-duration: 2s;
+    transform-origin: center center;
+    animation-iteration-count: infinite;
+    transition-timing-function: ease-in-out;
+    transition-property: transform;
+    transition-duration: 1s; }
+  .marquee img {
+    position: absolute;
+    top: 60px;
+    width: 150px;
+    animation-name: rotate-opposite;
+    animation-duration: 2s;
+    transform-origin: center center;
+    animation-iteration-count: infinite;
+    transition-timing-function: ease-in-out;
+    transition-property: transform;
+    transition-duration: 1s; }
+
+@keyframes rotate {
+  from {
+    transform: rotate(-20deg); }
+  50% {
+    transform: rotate(20deg); }
+  to {
+    transform: rotate(-20deg); } }
+
+@keyframes rotate-opposite {
+  from {
+    transform: rotate(20deg); }
+  50% {
+    transform: rotate(-20deg); }
+  to {
+    transform: rotate(20deg); } }
